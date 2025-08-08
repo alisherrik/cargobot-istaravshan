@@ -13,7 +13,7 @@ from telegram.ext import (
 ADMIN_ID = 1042437313
 BOT_TOKEN = '8252580479:AAH7KG7hYPSB2osGUHtN3PEVY7aA5n3ajrU'  # <-- tokenni ENV dan o‘qiymiz
 API_URL = "https://toocars.tj/api/trackcode"
-BASE_URL = os.getenv("BASE_URL")    # Railway domeni: https://<app>.up.railway.app
+BASE_URL = 'https://cargobot-istaravshan.up.railway.app'
 
 if not BOT_TOKEN:
     raise RuntimeError("BOT_TOKEN environment variableni o‘rnating!")
