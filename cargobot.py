@@ -117,17 +117,10 @@ if __name__ == '__main__':
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_button_press))
 
-    # BASE_URL bo‘lsa — Railway webhook; bo‘lmasa — local polling
-    if BASE_URL:
-        port = int(os.getenv("PORT", "8080"))
-        print(f"Webhook mode: 0.0.0.0:{port}  =>  {BASE_URL}/{BOT_TOKEN}")
-        app.run_webhook(
-            listen="0.0.0.0",
-            port=port,
-            url_path=BOT_TOKEN,
-            webhook_url=f"{BASE_URL}/{BOT_TOKEN}",
-            drop_pending_updates=True,
-        )
-    else:
-        print("Polling mode (local).")
-        app.run_polling()
+    print("Polling mode.")
+    app.run_polling(
+        poll_interval=2.0,
+        timeout=30,
+        allowed_updates=None,
+        drop_pending_updates=True
+    )
